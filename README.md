@@ -16,7 +16,7 @@ These instructions will get you a copy of the project up and running on your loc
 Clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/tdd-practice.git
+git clone https://github.com/N3mEee/tdd-practice.git
 ```
 
 Install the dependencies:
