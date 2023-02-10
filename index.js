@@ -1,75 +1,40 @@
-function capitalize(text) {
-    if (text.length >= 1 && text.charAt(0).match(/[a-z]/i)) {
-        return text.charAt(0).toUpperCase() + text.substring(1, text.length);
-    } else {
-        return "error";
-    }
-}
-
-function reverseString(text) {
-    if (text.length < 1) return "error";
-    let arr = [...text];
-    return arr.reverse().join("");
-}
-
-const calculator = {
-    add: function (n1, n2) {
-        return n1 + n2;
-    },
-    subtract: function (n1, n2) {
-        return n1 - n2;
-    },
-    divide: function (n1, n2) {
-        return n1 / n2;
-    },
-    multiply: function (n1, n2) {
-        return n1 * n2;
-    },
+const capitalize = (text) => {
+    if (!text.charAt(0).match(/[a-z]/i) || text.length < 1) return "error";
+    return text.charAt(0).toUpperCase() + text.slice(1);
 };
 
-function caesarCipher(str) {
-    let strArr = [...str];
-    let newArr = [];
+const reverseString = (text) => text.split("").reverse().join("") || "error";
 
-    for (let char of strArr) {
-        if (char.match(/[a-z]/i)) {
-            if (char === "Z") {
-                newArr.push("A");
-            } else if (char === "z") {
-                newArr.push("a");
-            } else {
-                const charCode = char.charCodeAt(0);
-                const newChar = String.fromCharCode(charCode + 1);
-                newArr.push(newChar);
-            }
-        } else {
-            newArr.push(char);
-        }
-    }
-    return newArr.join("");
-}
+const calculator = {
+    add: (n1, n2) => n1 + n2,
+    subtract: (n1, n2) => n1 - n2,
+    divide: (n1, n2) => n1 / n2,
+    multiply: (n1, n2) => n1 * n2,
+};
 
-function analyzeArray(arr) {
-    function average() {
-        return arr.reduce((a, b) => a + b, 0) / arr.length;
-    }
-    function length() {
-        return arr.length;
-    }
-    function max() {
-        return Math.max(...arr);
-    }
-    function min() {
-        return Math.min(...arr);
-    }
-    const object = {
+const caesarCipher = (str) => {
+    return str
+        .split("")
+        .map((char) => {
+            if (!/[a-z]/i.test(char)) return char;
+            if (char === "Z") return "A";
+            if (char === "z") return "a";
+            return String.fromCharCode(char.charCodeAt(0) + 1);
+        })
+        .join("");
+};
+
+const analyzeArray = (arr) => {
+    const average = () => arr.reduce((a, b) => a + b, 0) / arr.length;
+    const length = () => arr.length;
+    const max = () => Math.max(...arr);
+    const min = () => Math.min(...arr);
+    return {
         average: average(),
         length: length(),
         max: max(),
         min: min(),
     };
-
-    return object;
-}
+};
 
 export { capitalize, reverseString, calculator, caesarCipher, analyzeArray };
