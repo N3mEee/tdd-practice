@@ -27,9 +27,49 @@ const calculator = {
     },
 };
 
-function caesarCipher() {
-    // TODO: Finish the project
-    return 1;
+function caesarCipher(str) {
+    let strArr = [...str];
+    let newArr = [];
+
+    for (let char of strArr) {
+        if (char.match(/[a-z]/i)) {
+            if (char === "Z") {
+                newArr.push("A");
+            } else if (char === "z") {
+                newArr.push("a");
+            } else {
+                const charCode = char.charCodeAt(0);
+                const newChar = String.fromCharCode(charCode + 1);
+                newArr.push(newChar);
+            }
+        } else {
+            newArr.push(char);
+        }
+    }
+    return newArr.join("");
 }
 
-export { capitalize, reverseString, calculator, caesarCipher };
+function analyzeArray(arr) {
+    function average() {
+        return arr.reduce((a, b) => a + b, 0) / arr.length;
+    }
+    function length() {
+        return arr.length;
+    }
+    function max() {
+        return Math.max(...arr);
+    }
+    function min() {
+        return Math.min(...arr);
+    }
+    const object = {
+        average: average(),
+        length: length(),
+        max: max(),
+        min: min(),
+    };
+
+    return object;
+}
+
+export { capitalize, reverseString, calculator, caesarCipher, analyzeArray };

@@ -1,4 +1,4 @@
-import { capitalize, reverseString, calculator, caesarCipher } from "./index";
+import { capitalize, reverseString, calculator, caesarCipher, analyzeArray } from "./index";
 
 test("Capitalize simple", () => {
     expect(capitalize("test")).toBe("Test");
@@ -37,5 +37,23 @@ test("Multiply simple", () => {
 });
 
 test("caesarCipher", () => {
-    expect(caesarCipher(1)).toBe(1);
+    expect(caesarCipher("abcd")).toBe("bcde");
+});
+test("caesarCipher2", () => {
+    expect(caesarCipher("Acesta este un test")).toBe("Bdftub ftuf vo uftu");
+});
+test("caesarCipher3", () => {
+    expect(caesarCipher("zzzz !@# test")).toBe("aaaa !@# uftu");
+});
+test("caesarCipher4", () => {
+    expect(caesarCipher("CAPS")).toBe("DBQT");
+});
+
+test("analyzeArray", () => {
+    expect(analyzeArray([1, 8, 3, 4, 2, 6])).toStrictEqual({
+        average: 4,
+        min: 1,
+        max: 8,
+        length: 6,
+    });
 });
